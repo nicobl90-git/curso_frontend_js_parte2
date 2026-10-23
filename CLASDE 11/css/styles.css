@@ -1,0 +1,178 @@
+header, footer {
+
+    background-color: #e8e2d0;
+    color: #3d3226;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold
+
+}
+
+header {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-family: "Playfair Display", serif;
+}
+
+header p {
+    flex-grow: 1;
+    text-align: center;
+}
+
+body {
+    font-family: "Raleway", sans-serif;
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("../img/fondo2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+}
+
+main section {
+    margin-bottom: 60px;
+}
+
+.titulo {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+.nav-list {
+    list-style-type: none;
+    font-family: "Raleway", sans-serif;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: #f0ead6;
+}
+
+.bg-primario {
+    background-color: gray;
+}
+
+.media-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+    gap: 20px; /* Espacio entre las columnas */
+}
+
+.media-section video,
+.media-section iframe {
+    width: 100%;     /* ocupan todo el ancho de su columna */
+    height: 100%;     /* se adaptan a la altura que Grid les da */
+}
+
+.form-and-table {
+    display: grid;
+    grid-template-rows: auto auto; /* Dos filas de igual tamaño */
+    gap: 20px; /* Espacio entre las filas */
+    justify-items: center;
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacio entre los elementos del formulario */
+    width: 300px; /* Ancho del formulario */
+}
+
+.productos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+}
+
+.productos .titulo {
+    width: 100%;
+}
+
+.tarjeta {
+    width: 260px;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;   /* apila los elementos de adentro verticalmente */
+    text-align: center;
+    font-family: 'Raleway', sans-serif;  /* fuente externa */
+}
+
+.tarjeta-img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+}
+
+.tarjeta-precio {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.input-form input,
+.input-form textarea {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+footer i {
+    font-size: 30px;
+}
+
+.icono-whatsapp { color: #25D366; }
+.icono-instagram { color: #E1306C; }
+.icono-youtube { color: #FF0000; }
+
+
+
+
+/* ========================================= */
+/* MEDIA QUERIES                              */
+/* ========================================= */
+
+/* Pantallas chicas: hasta 600px (celulares) */
+@media only screen and (max-width: 600px) {
+    .media-section {
+        grid-template-columns: 1fr; /* 1 sola columna */
+    }
+
+    .input-form {
+        width: 90%; /* en vez de 300px fijo, ocupa el 90% de lo disponible */
+    }
+
+    .titulo {
+        font-size: 1.3rem; /* títulos un poco más chicos */
+    }
+
+    .nav-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+/* Pantallas medianas: de 601px a 900px (tablets) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+    .media-section {
+        grid-template-columns: 1fr 1fr; /* se mantienen las 2 columnas */
+    }
+
+    .input-form {
+        width: 280px;
+    }
+}
