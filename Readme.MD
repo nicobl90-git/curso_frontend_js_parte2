@@ -7,3 +7,7 @@ Reordeno las carpetas: elimino utils. Las de img, pages y video quedan al nivel 
 CLASE 9: Intro a Javascript
 
 CLASE 10: Condicionales y ciclos
+
+CLASE 11: Funciones
+
+CLASE 12: DOM
