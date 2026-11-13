@@ -11,3 +11,5 @@ CLASE 10: Condicionales y ciclos
 CLASE 11: Funciones
 
 CLASE 12: DOM
+
+CLASE 13: Local y session storage
