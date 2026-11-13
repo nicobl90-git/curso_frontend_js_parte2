@@ -32,4 +32,35 @@ Recordá que manipular el DOM es más sencillo si trabajás paso a paso: primero
 */
 
 
+// Array 
+const productos = [
+  { nombre: "Trascendencia", precio: 25000, descripcion: "Todo comienza con un sueño" },
+  { nombre: "El tren de los sueños", precio: 35000, descripcion: "El viaje de Sam" },
+  { nombre: "Los ojos de la serpiente", precio: 40000, descripcion: "Una familia. Una profecia. Una serpiente" }
+];
 
+// 1) Acceder al contenedor
+const contenedor = document.getElementById("contenedor-productos");
+
+// 2) Recorrer el array
+productos.forEach((producto) => {
+
+  // 3) Crear la tarjeta
+  const card = document.createElement("div");
+  card.classList.add("card");
+
+  // 4) Crear el título
+  const titulo = document.createElement("h3");
+  titulo.textContent = producto.nombre;
+
+  // 5) Crear el precio
+  const precio = document.createElement("p");
+  precio.textContent = "$" + producto.precio;
+
+  // 6) Armar la tarjeta: meter título y precio adentro
+  card.appendChild(titulo);
+  card.appendChild(precio);
+
+  // 7) Meter la tarjeta en el contenedor
+  contenedor.appendChild(card);
+});

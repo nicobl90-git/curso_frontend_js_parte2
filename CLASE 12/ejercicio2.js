@@ -1,72 +1,75 @@
-/* Generación y visualización de un array de productos
+/* Agregar descripción dinámica con botón
 
 Pasos a seguir:
 
-Creá una función llamada generarProductos() que no reciba parámetros.
+Al crear cada tarjeta, agrega un botón pequeño dentro de ella con el texto “Ver descripción”.
 
-Dentro de la función, armá un array llamado productos con al menos 5 objetos. Cada producto debe tener:
+Para cada botón, agrega un listener de eventos (addEventListener) para detectar cuando se hace clic.
 
-id: un identificador numérico único
+En la función que maneja el clic:
 
-name: nombre del producto
+Verifica si la descripción ya está visible en la tarjeta para evitar que se duplique.
 
-description: descripción breve
+Si la descripción no está visible, crea un nuevo elemento <p> con el texto de la descripción del producto.
 
-amount: precio en formato numérico
+Agrega ese párrafo dentro de la tarjeta (usando appendChild o similar).
 
-Retorná el array completo desde la función.
+Si la descripción ya está visible, puedes decidir ocultarla o simplemente ignorar el clic.
 
 Tips claves:
 
-Repasá la estructura de un objeto JavaScript (pares de clave/valor).
+Para agregar eventos usá siempre addEventListener() en lugar de poner el evento directo en el HTML.
 
-Usá nombres de propiedades claros y coherentes.
+Antes de crear y agregar la descripción, chequeá si ya existe para no duplicar contenido.
 
-Probá agregar un producto más si querés practicar.
+Pensá en la experiencia del usuario: que el botón tenga una acción clara y no genere elementos repetidos.
+
+Practicá crear y manejar elementos dinámicamente para ganar fluidez con el DOM y los eventos.
 */
 
-// Función para sumar
-// Función que genera y devuelve el array de productos
-function generarProductos() {
-  const productos = [
-    {
-      id: 1,
-      name: "Trascendencia",
-      description: "Primera novela de acceso al Universo de los Seres",
-      amount: 30000
-    },
-    {
-      id: 2,
-      name: "El tren de los sueños",
-      description: "Segunda novela con trama de autodescubrimiento",
-      amount: 40000
-    },
-    {
-      id: 3,
-      name: "Los ojos de la serpiente",
-      description: "Una historia del pasado sobre secretos heredados",
-      amount: 30000
-    },
-    {
-      id: 4,
-      name: "Próxima: Cuentos del Club de Literatura",
-      description: "Colección de cuentos cortos del club perteneciente al instituto Santo Tomás",
-      amount: 0
-    },
-    {
-      id: 5,
-      name: "Próxima: El Incidente de Santo Tomás",
-      description: "Una historia de misterio y suspenso que involucra a los estudiantes del instituto",
-      amount: 100
+// Array 
+const productos = [
+  { nombre: "Trascendencia", precio: 25000, descripcion: "Todo comienza con un sueño" },
+  { nombre: "El tren de los sueños", precio: 35000, descripcion: "El viaje de Sam" },
+  { nombre: "Los ojos de la serpiente", precio: 40000, descripcion: "Una familia. Una profecia. Una serpiente" }
+];
+
+const contenedor = document.getElementById("contenedor-productos");
+
+productos.forEach((producto) => {
+  const card = document.createElement("div");
+  card.classList.add("card");
+
+  const titulo = document.createElement("h3");
+  titulo.textContent = producto.nombre;
+
+  const precio = document.createElement("p");
+  precio.textContent = "$" + producto.precio;
+
+  // NUEVO: crear el botón
+  const boton = document.createElement("button");
+  boton.textContent = "Ver descripción";
+
+  // NUEVO: variable para guardar la descripción de ESTA tarjeta
+  let descripcion = null;
+
+  // NUEVO: listener del clic
+  boton.addEventListener("click", () => {
+    if (descripcion === null) {
+      // No existe: la creamos y la agregamos
+      descripcion = document.createElement("p");
+      descripcion.textContent = producto.descripcion;
+      card.appendChild(descripcion);
+    } else {
+      // Ya existe: la ocultamos (la sacamos de la tarjeta)
+      descripcion.remove();
+      descripcion = null;
     }
-  ];
+  });
 
-  return productos;
-}
+  card.appendChild(titulo);
+  card.appendChild(precio);
+  card.appendChild(boton); // NUEVO: el botón también va dentro de la tarjeta
 
-// Llamamos a la función y guardamos el resultado
-const listaProductos = generarProductos();
-
-// Visualización en consola
-console.log(listaProductos);
-console.table(listaProductos);
+  contenedor.appendChild(card);
+});
